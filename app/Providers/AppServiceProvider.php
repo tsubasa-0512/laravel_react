@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (\App::environment(['production'])) {
+        if (request()->isSecure()) {
             \URL::forceScheme('https');
         }
     }
