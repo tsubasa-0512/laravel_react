@@ -14,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (\App::environment(['staging', 'production'])) {
+            \URL::forceScheme('https');
+        }
     }
 
     /**
@@ -24,7 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (\App::environment('production')) {
-            \URL::forceScheme('https');
+        //
     }
 }
